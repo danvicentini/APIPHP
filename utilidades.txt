@@ -1,0 +1,10 @@
+ALTER TABLE `perfil_usuario`   
+  ADD COLUMN `id_usuario_criacao` INT(11) UNSIGNED NULL AFTER `id_cliente`,
+  ADD COLUMN `dt_criacao` DATETIME NULL AFTER `id_usuario_criacao`,
+  ADD COLUMN `id_usuario_alteracao` INT(11) UNSIGNED NULL AFTER `dt_criacao`,
+  ADD COLUMN `dt_alteracao` DATETIME NULL AFTER `id_usuario_alteracao`,
+  ADD COLUMN `id_usuario_delecao` INT(11) UNSIGNED NULL AFTER `dt_alteracao`,
+  ADD COLUMN `dt_delecao` DATETIME NULL AFTER `id_usuario_delecao`,
+  ADD CONSTRAINT `fk_perfil_usu_criacao` FOREIGN KEY (`id_usuario_alteracao`) REFERENCES `myservices`.`usuario`(`id`),
+  ADD CONSTRAINT `fk_perfil_usu_alteracao` FOREIGN KEY (`id_usuario_alteracao`) REFERENCES `myservices`.`usuario`(`id`),
+  ADD CONSTRAINT `fk_perfil_usu_delecao` FOREIGN KEY (`id_usuario_delecao`) REFERENCES `myservices`.`usuario`(`id`);
